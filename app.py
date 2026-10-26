@@ -31,7 +31,12 @@ def home():
             )
             file.save(input_path)
 
-            results = model(input_path)
+            results = model.predict(
+    source=input_path,
+    imgsz=320,
+    device="cpu",
+    verbose=False
+)
             result_filename = "detected_" + filename
             result_path = os.path.join(
                 app.config["RESULT_FOLDER"], result_filename
